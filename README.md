@@ -1,5 +1,7 @@
 # Where's Wally? Social Distancing Edition
 
+> **Original version:** this README and some fixes were added in 2026. To see the project exactly as it was first built, browse commit [`3698db3`](https://github.com/dianapaula19/wheres-wally-game/tree/3698db343f22b1108fe30c8bcfa87dcb0922cb05) (2021-10-03).
+
 A small point-and-click game drawn with legacy OpenGL and FreeGLUT: find Wally (red and white
 stripes) among the masked, socially distanced crowd before your three lives run out. A wrong
 click costs a heart, finding Wally draws a box around him, and a right click starts a new round.
