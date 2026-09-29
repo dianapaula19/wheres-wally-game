@@ -436,17 +436,18 @@ void desen (void) {
 }
 
 void mouse(int button, int state, int x, int y) {
-	bool condition = (x >= Waldo_x && x <= Waldo_x + ARM_W * 2 + ARM_SPACE * 2 + LEG_W * 2 + LEG_SPACE) && (WINDOW_H - y >= Waldo_y && y <= WINDOW_H - Waldo_y + LEG_H + ARM_H + HEAD_SPACE_H + HEAD);
+	// Mouse y grows downwards, OpenGL y upwards: compare in OpenGL coordinates.
+	int gl_y = WINDOW_H - y;
+	bool condition = (x >= Waldo_x && x <= Waldo_x + ARM_W * 2 + ARM_SPACE * 2 + LEG_W * 2 + LEG_SPACE) &&
+		(gl_y >= Waldo_y && gl_y <= Waldo_y + LEG_H + ARM_H + HEAD_SPACE_H + HEAD);
 	switch (button) {
 	case GLUT_LEFT_BUTTON:
-		if (state == GLUT_DOWN)
-			if (condition) {
+		if (state == GLUT_DOWN && found == 0 && lives > 0) {
+			if (condition)
 				found = 1;
-				cout << "DA" << endl;
-				cout << x << " " << y << endl;
-			}
 			else
 				lives--;
+		}
 		break;
 	case GLUT_RIGHT_BUTTON:
 		if (state == GLUT_DOWN && (found == 1 || lives <= 0))
